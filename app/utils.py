@@ -17,7 +17,7 @@ def get_prometheus_info(name, url):
 
 def get_additional_info():
     try:
-        response = requests.get(url="https://testnet-rpc.kira.network/api/valopers?all=true")
+        response = requests.get(url="https://rpc.kira.dragonstake.io/api/valopers?all=true")
     except (Timeout, ConnectionError):
         logging.error("[Node info] Timeout connection")
         return None
