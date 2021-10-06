@@ -15,7 +15,7 @@ def home():
     targets = \
         {
             "Node Exporter": "http://127.0.0.1:9100/metrics",
-            "Kira Network Info": "http://127.0.0.1:56660/metrics",
+            "Kira Network Info": "http://127.0.0.1:36660/metrics",
         }
 
     for name, url in targets.items():
