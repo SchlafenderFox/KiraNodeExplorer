@@ -50,39 +50,39 @@ def get_additional_info():
     else:
         return info
 
-    additional_node_info = '{' + f'address="{validator_info["address"]}",valkey="{validator_info["valkey"]}",pubkey="{validator_info["pubkey"]}",proposer="{validator_info["proposer"]}",' \
-                                 f'moniker="{validator_info["moniker"]}",website="{validator_info["website"]}",social="{validator_info["social"]}",identity="{validator_info["identity"]}",' \
+    additional_node_info = '{' + f'address="{validator_info.get("address", "None")}",valkey="{validator_info.get("valkey", "None")}",pubkey="{validator_info.get("pubkey", "None")}",proposer="{validator_info.get("proposer", "None")}",' \
+                                 f'moniker="{validator_info.get("moniker", "None")}",website="{validator_info.get("website", "None")}",social="{validator_info.get("social", "None")}",identity="{validator_info.get("identity", "None")}",' \
                                  f'status="{validator_info["status"]}"' + '}'
 
     info = info + f"# HELP node_top_number Node number in the general top.\n" \
                   f"# TYPE node_top_number gauge\n" \
-                  f"node_top_number{additional_node_info} {validator_info['top']}\n" \
+                  f"node_top_number{additional_node_info} {validator_info.get('top', -1)}\n" \
                   f"# HELP node_commission Node commission.\n" \
                   f"# TYPE node_commission gauge\n" \
-                  f"node_commission{additional_node_info} {validator_info['commission']}\n" \
+                  f"node_commission{additional_node_info} {validator_info.get('commission', -1)}\n" \
                   f"# HELP node_rank Node rank.\n" \
                   f"# TYPE node_rank gauge\n" \
-                  f"node_rank{additional_node_info} {validator_info['rank']}\n" \
+                  f"node_rank{additional_node_info} {validator_info.get('rank', -1)}\n" \
                   f"# HELP node_streak Node streak.\n" \
                   f"# TYPE node_streak gauge\n" \
-                  f"node_streak{additional_node_info} {validator_info['streak']}\n" \
+                  f"node_streak{additional_node_info} {validator_info.get('streak', -1)}\n" \
                   f"# HELP node_mischance Node mischance.\n" \
                   f"# TYPE node_mischance gauge\n" \
-                  f"node_mischance{additional_node_info} {validator_info['mischance']}\n" \
+                  f"node_mischance{additional_node_info} {validator_info.get('mischance', -1)}\n" \
                   f"# HELP node_mischance_confidence Node mischance confidence.\n" \
                   f"# TYPE node_mischance_confidence gauge\n" \
-                  f"node_mischance_confidence{additional_node_info} {validator_info['mischance_confidence']}\n" \
+                  f"node_mischance_confidence{additional_node_info} {validator_info.get('mischance_confidence', -1)}\n" \
                   f"# HELP node_start_height Node start height.\n" \
                   f"# TYPE node_start_height gauge\n" \
-                  f"node_start_height{additional_node_info} {validator_info['start_height']}\n" \
+                  f"node_start_height{additional_node_info} {validator_info.get('start_height', -1)}\n" \
                   f"# HELP node_last_present_block Node last present block.\n" \
                   f"# TYPE node_last_present_block gauge\n" \
-                  f"node_last_present_block{additional_node_info} {validator_info['last_present_block']}\n" \
+                  f"node_last_present_block{additional_node_info} {validator_info.get('last_present_block', -1)}\n" \
                   f"# HELP node_missed_blocks_counter Node missed blocks counter.\n" \
                   f"# TYPE node_missed_blocks_counter gauge\n" \
-                  f"node_missed_blocks_counter{additional_node_info} {validator_info['missed_blocks_counter']}\n" \
+                  f"node_missed_blocks_counter{additional_node_info} {validator_info.get('missed_blocks_counter', -1)}\n" \
                   f"# HELP node_produced_blocks_counter Node produced blocks counter.\n" \
                   f"# TYPE node_produced_blocks_counter gauge\n" \
-                  f"node_produced_blocks_counter{additional_node_info} {validator_info['produced_blocks_counter']}"
+                  f"node_produced_blocks_counter{additional_node_info} {validator_info.get('produced_blocks_counter', -1)}"
 
     return info
